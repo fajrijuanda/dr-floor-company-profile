@@ -3,8 +3,13 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export function Promo() {
+  const { lang } = useLanguage();
+  const t = translations.promo;
+
   return (
     <section id="promo" className="py-20 bg-gradient-to-r from-[#e6e2dd] via-[#f2f0ec] to-white">
       <div className="w-full px-4 lg:px-8 xl:px-10">
@@ -27,14 +32,14 @@ export function Promo() {
                  style={{ backgroundImage: 'radial-gradient(#8c867a 20%, transparent 20%)', backgroundSize: '16px 16px', transform: 'rotate(-10deg)' }}></div>
 
             <div className="relative z-10 flex flex-col items-center text-center">
-              <h2 className="text-5xl lg:text-6xl font-black text-slate-800 mb-4 tracking-tight">Flash Sale!</h2>
-              <p className="text-xl text-slate-700 mb-10 font-medium">Get 25% - Limited Time Offer</p>
+              <h2 className="text-5xl lg:text-6xl font-black text-slate-800 mb-4 tracking-tight">{t.flashSale[lang]}</h2>
+              <p className="text-xl text-slate-700 mb-10 font-medium">{t.flashSaleDesc[lang]}</p>
               
               {/* Timer */}
               <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4 lg:gap-8 text-slate-800 mb-12">
                 <div className="flex flex-col items-center">
                   <span className="text-3xl md:text-4xl lg:text-5xl font-medium mb-1">5</span>
-                  <span className="text-xs md:text-sm lg:text-base font-medium">days</span>
+                  <span className="text-xs md:text-sm lg:text-base font-medium">{t.days[lang]}</span>
                 </div>
                 
                 <div className="flex flex-col gap-1 -mt-4 md:-mt-6">
@@ -44,7 +49,7 @@ export function Promo() {
 
                 <div className="flex flex-col items-center">
                   <span className="text-3xl md:text-4xl lg:text-5xl font-medium mb-1">15</span>
-                  <span className="text-xs md:text-sm lg:text-base font-medium">Hours</span>
+                  <span className="text-xs md:text-sm lg:text-base font-medium">{t.hours[lang]}</span>
                 </div>
 
                 <div className="flex flex-col gap-1 -mt-4 md:-mt-6">
@@ -54,7 +59,7 @@ export function Promo() {
 
                 <div className="flex flex-col items-center">
                   <span className="text-3xl md:text-4xl lg:text-5xl font-medium mb-1">38</span>
-                  <span className="text-xs md:text-sm lg:text-base font-medium">Minutes</span>
+                  <span className="text-xs md:text-sm lg:text-base font-medium">{t.minutes[lang]}</span>
                 </div>
 
                 <div className="flex flex-col gap-1 -mt-4 md:-mt-6">
@@ -64,7 +69,7 @@ export function Promo() {
 
                 <div className="flex flex-col items-center">
                   <span className="text-3xl md:text-4xl lg:text-5xl font-medium mb-1">14</span>
-                  <span className="text-xs md:text-sm lg:text-base font-medium">Seconds</span>
+                  <span className="text-xs md:text-sm lg:text-base font-medium">{t.seconds[lang]}</span>
                 </div>
               </div>
 
@@ -73,7 +78,7 @@ export function Promo() {
                 href="#contact"
                 className="bg-[#3A3F47] hover:bg-[#43913A] text-white px-8 py-3.5 rounded-full font-medium transition-colors flex items-center gap-2 text-lg shadow-lg"
               >
-                Shop Now <ArrowRight size={20} />
+                {t.shopNow[lang]} <ArrowRight size={20} />
               </Link>
             </div>
           </motion.div>

@@ -5,10 +5,14 @@ import CountUp from "react-countup";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Gem, Clock, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { lang } = useLanguage();
+  const t = translations.about;
 
   return (
     <section id="about" className="py-24 bg-white overflow-hidden" ref={ref}>
@@ -26,11 +30,13 @@ export function About() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">
-              Designed to <br /> Exceed Expectations
+              {t.headline[lang].split('\n').map((line, i) => (
+                <span key={i}>{line}{i < 1 && <br />}</span>
+              ))}
             </h2>
             
             <p className="text-sm md:text-base text-slate-500 mb-10 leading-relaxed max-w-md">
-              We believe concrete should be more than industrial—it should feel right. Our services are designed to support everyday living with quality materials, smart craftsmanship, and designs that last.
+              {t.description[lang]}
             </p>
             
             <div className="space-y-8">
@@ -39,9 +45,9 @@ export function About() {
                   <Gem size={28} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Our Vision</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">{t.visionTitle[lang]}</h3>
                   <p className="text-slate-600 leading-relaxed">
-                    No.1 Leading Eco-Friendly Concrete Polishing Company in Indonesia.
+                    {t.visionText[lang]}
                   </p>
                 </div>
               </div>
@@ -51,9 +57,9 @@ export function About() {
                   <Clock size={28} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Our Mission</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">{t.missionTitle[lang]}</h3>
                   <p className="text-slate-600 leading-relaxed">
-                    Providing an excellent service with high-tech & innovative products and most advanced Eco-friendly Concrete Floor Finishing Materials with staff can-do attitude.
+                    {t.missionText[lang]}
                   </p>
                 </div>
               </div>
@@ -102,7 +108,7 @@ export function About() {
                 {isInView ? <CountUp end={50} duration={2.5} /> : "0"}K+
               </div>
               <div className="text-xs text-white/70">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus imperdiet.
+                {lang === "id" ? "Klien puas yang telah mempercayakan proyek lantai mereka kepada kami." : "Satisfied clients who have trusted us with their flooring projects."}
               </div>
             </motion.div>
           </div>
@@ -117,8 +123,8 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">PT Doctor Floor Indonesia</h2>
-              <p className="text-slate-500 mt-2 text-lg">Organizational Structure</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">{t.orgTitle[lang]}</h2>
+              <p className="text-slate-500 mt-2 text-lg">{t.orgSubtitle[lang]}</p>
             </motion.div>
             <motion.button 
               className="mt-6 md:mt-0 flex items-center gap-2 text-[#43913A] font-semibold hover:gap-4 transition-all"
@@ -127,7 +133,7 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Download PDF <ArrowRight size={20} />
+              {t.downloadPdf[lang]} <ArrowRight size={20} />
             </motion.button>
           </div>
           
@@ -146,8 +152,8 @@ export function About() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <p className="text-lg font-medium text-slate-500">Bagan Organisasi (Placeholder)</p>
-                <p className="text-sm text-slate-400 mt-2">Gambar struktur organisasi akan ditampilkan di sini</p>
+                <p className="text-lg font-medium text-slate-500">{t.orgPlaceholder[lang]}</p>
+                <p className="text-sm text-slate-400 mt-2">{t.orgPlaceholderDesc[lang]}</p>
               </div>
             </div>
           </motion.div>

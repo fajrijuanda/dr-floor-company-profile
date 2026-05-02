@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import { Heart, Maximize2, ShoppingBag, Star } from "lucide-react";
 import { useState, useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
-const products = [
+const productsData = [
   {
     id: 1,
-    name: "Epoxy Resin Coating",
-    category: "Chemicals",
     price: "$80.00",
     originalPrice: "$160.00",
     rating: 4.9,
@@ -18,8 +18,6 @@ const products = [
   },
   {
     id: 2,
-    name: "Diamond Polishing Pad",
-    category: "Tools",
     price: "$50.00",
     originalPrice: "$60.00",
     rating: 4.9,
@@ -29,8 +27,6 @@ const products = [
   },
   {
     id: 3,
-    name: "Industrial Floor Grinder",
-    category: "Machinery",
     price: "$195.00",
     originalPrice: "$390.00",
     rating: 4.9,
@@ -40,8 +36,6 @@ const products = [
   },
   {
     id: 4,
-    name: "Concrete Sealer Pro",
-    category: "Chemicals",
     price: "$40.00",
     originalPrice: "$80.00",
     rating: 4.9,
@@ -51,8 +45,6 @@ const products = [
   },
   {
     id: 5,
-    name: "Floor Wax Polish",
-    category: "Chemicals",
     price: "$25.00",
     originalPrice: "$35.00",
     rating: 4.8,
@@ -63,8 +55,10 @@ const products = [
 ];
 
 export function Products() {
-  const [activeTab, setActiveTab] = useState("Latest Products");
-  const tabs = ["All Products", "Latest Products", "Best Seller", "Featured Products"];
+  const { lang } = useLanguage();
+  const t = translations.products;
+  const tabs = t.tabs[lang];
+  const [activeTab, setActiveTab] = useState(tabs[1]);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -96,10 +90,10 @@ export function Products() {
       <div className="flex flex-col items-center justify-center text-center px-4 mb-10">
         <div className="flex items-center gap-3 text-[#43913A] font-bold text-lg mb-2">
           <span className="w-8 h-[2px] bg-[#43913A]"></span> 
-          Our Products
+          {t.subtitle[lang]}
         </div>
         <h2 className="text-4xl md:text-5xl font-black text-slate-800 tracking-tight">
-          Our Products Collections
+          {t.title[lang]}
         </h2>
       </div>
 
@@ -131,7 +125,7 @@ export function Products() {
           className="flex gap-6 overflow-x-auto pb-12 pt-4 snap-x hide-scrollbar   px-4 lg:px-8 xl:px-10 cursor-grab active:cursor-grabbing"
         >
           
-          {products.map((product, index) => (
+          {productsData.map((product, index) => (
             <motion.div 
               key={product.id}
               className="w-[85vw] sm:w-[320px] bg-[#FAF9F6] p-4 rounded-[2rem] shrink-0 snap-center shadow-lg border border-white group"
@@ -165,28 +159,28 @@ export function Products() {
                 {/* Image */}
                 <img 
                   src={product.image} 
-                  alt={product.name} 
+                  alt={t.items[index]?.name[lang] || ""} 
                   className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500" 
                 />
 
-                {/* Optional Timer (Only for the first item as in the design) */}
+                {/* Optional Timer */}
                 {product.hasTimer && (
                   <div className="absolute bottom-4 left-4 right-4 bg-[#43913A] rounded-xl flex divide-x divide-white/30 text-white py-2 shadow-lg z-10">
                     <div className="flex-1 flex flex-col items-center justify-center">
                       <span className="font-bold text-sm">5</span>
-                      <span className="text-[10px] uppercase font-medium">day</span>
+                      <span className="text-[10px] uppercase font-medium">{t.day[lang]}</span>
                     </div>
                     <div className="flex-1 flex flex-col items-center justify-center">
                       <span className="font-bold text-sm">23</span>
-                      <span className="text-[10px] uppercase font-medium">Hour</span>
+                      <span className="text-[10px] uppercase font-medium">{t.hour[lang]}</span>
                     </div>
                     <div className="flex-1 flex flex-col items-center justify-center">
                       <span className="font-bold text-sm">36</span>
-                      <span className="text-[10px] uppercase font-medium">min</span>
+                      <span className="text-[10px] uppercase font-medium">{t.min[lang]}</span>
                     </div>
                     <div className="flex-1 flex flex-col items-center justify-center">
                       <span className="font-bold text-sm">55</span>
-                      <span className="text-[10px] uppercase font-medium">sec</span>
+                      <span className="text-[10px] uppercase font-medium">{t.sec[lang]}</span>
                     </div>
                   </div>
                 )}
@@ -195,7 +189,7 @@ export function Products() {
               {/* Product Info */}
               <div className="px-2 pb-2">
                 <div className="flex justify-between items-center mb-1">
-                  <span className="text-slate-500 text-sm font-medium">{product.category}</span>
+                  <span className="text-slate-500 text-sm font-medium">{t.items[index]?.category[lang] || ""}</span>
                   <div className="flex items-center gap-1 text-slate-800 font-bold text-sm">
                     <Star size={14} className="text-[#FFB800] fill-[#FFB800]" />
                     {product.rating}
@@ -203,7 +197,7 @@ export function Products() {
                 </div>
                 
                 <h3 className="text-xl font-bold text-slate-900 mb-3 truncate">
-                  {product.name}
+                  {t.items[index]?.name[lang] || ""}
                 </h3>
                 
                 <div className="flex items-center gap-3">

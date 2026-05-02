@@ -2,8 +2,13 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export function Services() {
+  const { lang } = useLanguage();
+  const t = translations.services;
+
   return (
     <section id="services" className="py-24 bg-gradient-to-r from-[#e6e2dd] via-[#f2f0ec] to-white">
       <div className="w-full px-4 lg:px-8 xl:px-10">
@@ -19,16 +24,18 @@ export function Services() {
             transition={{ duration: 0.8 }}
           >
             <div className="relative z-20 w-full lg:w-3/4">
-              <div className="text-[#43913A] font-bold text-xl mb-2">500+ Projects</div>
+              <div className="text-[#43913A] font-bold text-xl mb-2">500+ {lang === "id" ? "Proyek" : "Projects"}</div>
               <h3 className="text-[#e6e2dd] text-5xl xl:text-6xl font-black mb-6 leading-[1.1] tracking-tight">
-                Concrete<br/>Polishing
+                {t.concretePolishing[lang].split('\n').map((line, i) => (
+                  <span key={i}>{line}{i < 1 && <br/>}</span>
+                ))}
               </h3>
               <p className="text-slate-300 text-sm mb-10 leading-relaxed font-medium">
-                Solid and shiny concrete with clean modern lines. Perfect for industrial settings and commercial spaces.
+                {t.concretePolishingDesc[lang]}
               </p>
               
               <ul className="flex flex-col gap-3">
-                {['Industrial Concrete', 'Commercial Concrete', 'Exposed Aggregate', 'Matte Finish', 'Glossy Finish', 'Dyed Concrete'].map(item => (
+                {t.concretePolishingItems[lang].map(item => (
                   <li key={item}>
                     <Link href="#" className="text-slate-300 hover:text-white transition-colors text-base font-medium flex items-center gap-2">
                       {item}
@@ -62,11 +69,15 @@ export function Services() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <div className="relative z-20 w-1/2">
-                <div className="text-[#43913A] font-bold text-xl mb-1">200+ Projects</div>
-                <h3 className="text-slate-800 text-5xl xl:text-6xl font-black mb-8 tracking-tight">Epoxy<br/>Coating</h3>
+                <div className="text-[#43913A] font-bold text-xl mb-1">200+ {lang === "id" ? "Proyek" : "Projects"}</div>
+                <h3 className="text-slate-800 text-5xl xl:text-6xl font-black mb-8 tracking-tight">
+                  {t.epoxyCoating[lang].split('\n').map((line, i) => (
+                    <span key={i}>{line}{i < 1 && <br/>}</span>
+                  ))}
+                </h3>
                 
                 <ul className="flex flex-col gap-2">
-                  {['PU Coating', 'Water-based Epoxy', 'Self-leveling', 'Anti-static'].map(item => (
+                  {t.epoxyItems[lang].map(item => (
                     <li key={item}>
                       <Link href="#" className="text-slate-600 hover:text-slate-900 transition-colors text-base font-medium">
                         {item}
@@ -107,11 +118,15 @@ export function Services() {
               </div>
 
               <div className="relative z-20 w-1/2 flex flex-col items-end text-right">
-                <div className="text-[#43913A] font-bold text-xl mb-1">300+ Projects</div>
-                <h3 className="text-slate-800 text-5xl xl:text-6xl font-black mb-8 tracking-tight">Floor<br/>Care</h3>
+                <div className="text-[#43913A] font-bold text-xl mb-1">300+ {lang === "id" ? "Proyek" : "Projects"}</div>
+                <h3 className="text-slate-800 text-5xl xl:text-6xl font-black mb-8 tracking-tight">
+                  {t.floorCare[lang].split('\n').map((line, i) => (
+                    <span key={i}>{line}{i < 1 && <br/>}</span>
+                  ))}
+                </h3>
                 
                 <ul className="flex flex-col gap-2 items-end">
-                  {['Concrete Grinding', 'Crack Repair', 'Sealer App', 'Deep Cleaning'].map(item => (
+                  {t.floorCareItems[lang].map(item => (
                     <li key={item}>
                       <Link href="#" className="text-slate-700 hover:text-slate-900 transition-colors text-base font-medium">
                         {item}

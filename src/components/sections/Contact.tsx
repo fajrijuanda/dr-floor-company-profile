@@ -2,8 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export function Contact() {
+  const { lang } = useLanguage();
+  const t = translations.contact;
+
   return (
     <section id="contact" className="py-24 relative overflow-hidden bg-white">
       {/* Abstract Green Background Elements */}
@@ -12,10 +17,10 @@ export function Contact() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Request for Quotation / Inquiry</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">{t.title[lang]}</h2>
           <div className="w-24 h-1 bg-[#43913A] mx-auto rounded-full mb-6"></div>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            Need a quote? Don't be afraid to ask! Start a conversation with us.
+            {t.description[lang]}
           </p>
         </div>
 
@@ -29,7 +34,7 @@ export function Contact() {
             transition={{ duration: 0.6 }}
           >
             <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
-              <h3 className="text-2xl font-bold text-slate-800 mb-6">Informasi Kontak</h3>
+              <h3 className="text-2xl font-bold text-slate-800 mb-6">{t.contactInfo[lang]}</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start">
@@ -37,7 +42,7 @@ export function Contact() {
                     <MapPin />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800">Office Address</h4>
+                    <h4 className="font-semibold text-slate-800">{t.officeAddress[lang]}</h4>
                     <p className="text-slate-600 mt-1">Artha Graha Building, 26th Floor SCBD, Jl. Jend. Sudirman No. 52-53, South Jakarta, DKI Jakarta, Indonesia 12190</p>
                   </div>
                 </div>
@@ -47,7 +52,7 @@ export function Contact() {
                     <Phone />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800">Phone Number</h4>
+                    <h4 className="font-semibold text-slate-800">{t.phoneNumber[lang]}</h4>
                     <p className="text-slate-600 mt-1">+62 21 5099 6969 Ext. 1263</p>
                   </div>
                 </div>
@@ -57,7 +62,7 @@ export function Contact() {
                     <Mail />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800">Email</h4>
+                    <h4 className="font-semibold text-slate-800">{t.email[lang]}</h4>
                     <p className="text-slate-600 mt-1">hkdrfloor@gmail.com<br/>marketing@drfloor-idn.co.id</p>
                   </div>
                 </div>
@@ -74,11 +79,11 @@ export function Contact() {
             transition={{ duration: 0.6 }}
           >
             <form className="bg-white/70 backdrop-blur-md border border-white/40 p-8 md:p-10 rounded-2xl shadow-xl shadow-slate-200/50">
-              <h3 className="text-2xl font-bold text-slate-800 mb-6">Kirimkan Pesan Anda</h3>
+              <h3 className="text-2xl font-bold text-slate-800 mb-6">{t.formTitle[lang]}</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">Nama Lengkap</label>
+                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">{t.fullName[lang]}</label>
                   <input 
                     type="text" 
                     id="name" 
@@ -87,7 +92,7 @@ export function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">Alamat Email</label>
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">{t.emailAddress[lang]}</label>
                   <input 
                     type="email" 
                     id="email" 
@@ -98,26 +103,26 @@ export function Contact() {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="service" className="block text-sm font-medium text-slate-700 mb-2">Layanan yang Dibutuhkan</label>
+                <label htmlFor="service" className="block text-sm font-medium text-slate-700 mb-2">{t.serviceNeeded[lang]}</label>
                 <select 
                   id="service" 
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors bg-white/50 appearance-none"
                 >
-                  <option value="">Pilih Layanan</option>
+                  <option value="">{t.selectService[lang]}</option>
                   <option value="polishing">Concrete Polishing</option>
                   <option value="epoxy">Epoxy Coating</option>
-                  <option value="maintenance">Perawatan Lantai</option>
-                  <option value="other">Lainnya</option>
+                  <option value="maintenance">{t.floorMaintenance[lang]}</option>
+                  <option value="other">{t.other[lang]}</option>
                 </select>
               </div>
 
               <div className="mb-8">
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">Pesan Detail</label>
+                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">{t.detailedMessage[lang]}</label>
                 <textarea 
                   id="message" 
                   rows={4} 
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors bg-white/50 resize-none"
-                  placeholder="Ceritakan tentang proyek Anda..."
+                  placeholder={t.messagePlaceholder[lang]}
                 ></textarea>
               </div>
 
@@ -125,7 +130,7 @@ export function Contact() {
                 type="submit" 
                 className="w-full bg-[#43913A] hover:bg-[#43913A]/90 text-white font-bold py-4 px-8 rounded-xl transition-all hover:shadow-lg hover:shadow-primary/30 flex items-center justify-center group"
               >
-                Send
+                {t.send[lang]}
                 <Send className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
               </button>
             </form>

@@ -2,36 +2,38 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Star, ArrowLeft, ShieldCheck, Truck, HeadphonesIcon, Award } from "lucide-react";
+import { ArrowRight, ArrowLeft, ShieldCheck, HeadphonesIcon, Award } from "lucide-react";
 import { useState, useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 const heroCards = [
   {
     id: 1,
-    title: "Polished Concrete",
-    tag: "Industrial",
-    projects: "1,200+ Projects",
+    titleKey: "polishedConcrete" as const,
+    tagKey: "industrial" as const,
+    projectCount: "1,200+",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 2,
-    title: "Epoxy Coating",
-    tag: "Commercial",
-    projects: "800+ Projects",
+    titleKey: "epoxyCoating" as const,
+    tagKey: "commercial" as const,
+    projectCount: "800+",
     image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 3,
-    title: "Floor Maintenance",
-    tag: "Service",
-    projects: "450+ Projects",
+    titleKey: "floorMaintenance" as const,
+    tagKey: "service" as const,
+    projectCount: "450+",
     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 4,
-    title: "Decorative Concrete",
-    tag: "Residential",
-    projects: "300+ Projects",
+    titleKey: "decorativeConcrete" as const,
+    tagKey: "residential" as const,
+    projectCount: "300+",
     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop"
   }
 ];
@@ -41,6 +43,8 @@ export function Hero() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeftState, setScrollLeftState] = useState(0);
+  const { lang } = useLanguage();
+  const t = translations.hero;
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollRef.current) return;
@@ -97,17 +101,19 @@ export function Hero() {
               {/* Badge */}
               <div className="bg-white rounded-full px-5 py-2.5 flex items-center gap-3 mb-6 shadow-sm border border-slate-100">
                 <div className="text-[#43913A]"><Award size={18} /></div>
-                <span className="text-slate-800 font-bold text-sm tracking-wide">No.1 Concrete Polishing Service</span>
+                <span className="text-slate-800 font-bold text-sm tracking-wide">{t.badge[lang]}</span>
               </div>
 
               {/* Headline */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] font-black text-slate-900 leading-[1.1] tracking-tight mb-4 md:mb-6">
-                Total Solution <br /> Partner for <br /> Concrete Polishing
+                {t.headline[lang].split('\n').map((line, i) => (
+                  <span key={i}>{line}{i < 2 && <br />}</span>
+                ))}
               </h1>
 
               {/* Subtitle */}
               <p className="text-base md:text-lg text-slate-700 mb-8 md:mb-10 max-w-lg leading-relaxed font-medium">
-                Dr. Floor is a No.1 Leading Eco-Friendly Concrete Polishing Company in Indonesia with High-tech & Innovative Products.
+                {t.subtitle[lang]}
               </p>
 
               {/* Buttons */}
@@ -116,13 +122,13 @@ export function Hero() {
                   href="#contact"
                   className="bg-[#43913A] hover:bg-green-700 text-white px-8 py-3.5 rounded-full font-bold transition-colors flex items-center gap-2 shadow-lg shadow-primary/30"
                 >
-                  Contact Us <ArrowRight size={18} />
+                  {t.contactUs[lang]} <ArrowRight size={18} />
                 </Link>
                 <Link 
                   href="#about"
                   className="bg-slate-800 hover:bg-slate-900 text-white px-8 py-3.5 rounded-full font-bold transition-colors shadow-lg shadow-slate-800/20"
                 >
-                  Meet the Team
+                  {t.meetTeam[lang]}
                 </Link>
               </div>
 
@@ -136,9 +142,9 @@ export function Hero() {
                 </div>
                 <div>
                   <div className="flex items-center gap-1 text-slate-900 font-bold text-lg">
-                    4.9 Ratings+ 
+                    {t.ratings[lang]}
                   </div>
-                  <div className="text-slate-600 text-sm font-medium">Trusted by 500+ Clients</div>
+                  <div className="text-slate-600 text-sm font-medium">{t.trustedBy[lang]}</div>
                 </div>
               </div>
             </motion.div>
@@ -162,15 +168,15 @@ export function Hero() {
                 {heroCards.map((card) => (
                   <div key={card.id} className="w-[85vw] sm:w-[400px] lg:w-[450px] bg-[#f8f6f3] rounded-[2.5rem] p-4 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] shrink-0 snap-center border-4 border-white pointer-events-none">
                     <div className="relative w-full h-64 md:h-[320px] rounded-[1.8rem] overflow-hidden mb-6">
-                      <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
+                      <img src={card.image} alt={t.cards[card.titleKey][lang]} className="w-full h-full object-cover" />
                       <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-xs font-bold">
-                        {card.tag}
+                        {t.cards[card.tagKey][lang]}
                       </div>
                     </div>
                     <div className="px-3 flex justify-between items-center pb-3 pointer-events-auto">
                       <div>
-                        <h3 className="text-2xl font-bold text-slate-900 mb-1">{card.title}</h3>
-                        <p className="text-slate-500 font-medium">{card.projects}</p>
+                        <h3 className="text-2xl font-bold text-slate-900 mb-1">{t.cards[card.titleKey][lang]}</h3>
+                        <p className="text-slate-500 font-medium">{card.projectCount} {t.cards.projects[lang]}</p>
                       </div>
                       <button className="w-14 h-14 rounded-full bg-[#006080] text-white flex items-center justify-center hover:bg-[#43913A] transition-colors shadow-lg shrink-0">
                         <ArrowRight size={24} className="-rotate-45" />
@@ -180,7 +186,7 @@ export function Hero() {
                 ))}
               </div>
 
-              {/* Navigation Arrows positioned like 01.jpeg */}
+              {/* Navigation Arrows */}
               <div className="hidden lg:flex absolute -bottom-4 left-0 gap-3 z-20">
                 <button 
                   onClick={scrollLeft}
@@ -208,24 +214,24 @@ export function Hero() {
             <div className="flex items-center gap-5 md:justify-center pt-4 md:pt-0">
               <div className="text-[#43913A]"><ShieldCheck size={48} strokeWidth={1.5} /></div>
               <div>
-                <h4 className="text-white font-bold text-lg mb-1">Eco-Friendly</h4>
-                <p className="text-slate-400 text-sm font-medium">Safe & sustainable materials</p>
+                <h4 className="text-white font-bold text-lg mb-1">{t.features.ecoFriendly[lang]}</h4>
+                <p className="text-slate-400 text-sm font-medium">{t.features.ecoFriendlyDesc[lang]}</p>
               </div>
             </div>
 
             <div className="flex items-center gap-5 md:justify-center pt-6 md:pt-0">
               <div className="text-[#43913A]"><Award size={48} strokeWidth={1.5} /></div>
               <div>
-                <h4 className="text-white font-bold text-lg mb-1">High-Tech Standard</h4>
-                <p className="text-slate-400 text-sm font-medium">Advanced finishing products</p>
+                <h4 className="text-white font-bold text-lg mb-1">{t.features.highTech[lang]}</h4>
+                <p className="text-slate-400 text-sm font-medium">{t.features.highTechDesc[lang]}</p>
               </div>
             </div>
 
             <div className="flex items-center gap-5 md:justify-center pt-6 md:pt-0">
               <div className="text-[#43913A]"><HeadphonesIcon size={48} strokeWidth={1.5} /></div>
               <div>
-                <h4 className="text-white font-bold text-lg mb-1">Free Consultation</h4>
-                <p className="text-slate-400 text-sm font-medium">Support for your projects</p>
+                <h4 className="text-white font-bold text-lg mb-1">{t.features.freeConsult[lang]}</h4>
+                <p className="text-slate-400 text-sm font-medium">{t.features.freeConsultDesc[lang]}</p>
               </div>
             </div>
 

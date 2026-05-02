@@ -3,47 +3,43 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Heart, Maximize2, ShoppingBag, Star } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
-const dailyDeals = [
+const dailyDealsData = [
   {
     id: 1,
-    name: "Diamond Grinding Pads",
-    category: "Tools",
     price: "$80.00",
     originalPrice: "$100.00",
     rating: 4.9,
     discount: "30% off",
-    description: "High-quality diamond impregnated pads for smooth concrete polishing. Ensures long-lasting finish and reduces polishing time significantly.",
     image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=800&auto=format&fit=crop",
     imgBg: "bg-[#D5CDBD]"
   },
   {
     id: 2,
-    name: "Epoxy Resin Kit",
-    category: "Chemicals",
     price: "$120.00",
     originalPrice: "$150.00",
     rating: 4.8,
     discount: "20% off",
-    description: "Premium industrial grade epoxy resin for commercial floors. Provides excellent chemical resistance and a high-gloss finish.",
     image: "https://images.unsplash.com/photo-1585565804112-f201f68c48b4?q=80&w=800&auto=format&fit=crop",
     imgBg: "bg-[#B5BAA8]"
   },
   {
     id: 3,
-    name: "Concrete Sealer Pro",
-    category: "Chemicals",
     price: "$45.00",
     originalPrice: "$50.00",
     rating: 4.9,
     discount: "10% off",
-    description: "Penetrating concrete sealer designed to protect against stains, moisture, and chemical damage. Easy to apply.",
     image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=800&auto=format&fit=crop",
     imgBg: "bg-[#C4CCD3]"
   }
 ];
 
 export function Deals() {
+  const { lang } = useLanguage();
+  const t = translations.deals;
+
   return (
     <section id="deals" className="py-24 bg-gradient-to-r from-[#e6e2dd] via-[#f2f0ec] to-white overflow-hidden">
       <div className="w-full px-4 lg:px-8 xl:px-10">
@@ -53,15 +49,15 @@ export function Deals() {
           <div className="w-full md:w-1/2">
             <div className="flex items-center gap-3 text-slate-700 font-bold text-lg mb-2">
               <span className="w-8 h-[2px] bg-[#43913A]"></span> 
-              Today Deals
+              {t.subtitle[lang]}
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-slate-800 tracking-tight">
-              <span className="text-[#43913A]">Deals</span> of the Day
+              <span className="text-[#43913A]">{t.titleHighlight[lang]}</span> {t.title[lang]}
             </h2>
           </div>
           <div className="w-full md:w-5/12">
             <p className="text-slate-600 font-medium leading-relaxed">
-              Discover our exclusive daily offers on premium concrete polishing tools and high-grade epoxy materials. Upgrade your flooring projects with our top-tier products at unbeatable prices.
+              {t.description[lang]}
             </p>
           </div>
         </div>
@@ -70,7 +66,7 @@ export function Deals() {
         <div className="w-full relative mb-12">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             
-            {dailyDeals.map((deal, index) => (
+            {dailyDealsData.map((deal, index) => (
               <motion.div 
                 key={deal.id}
                 className="w-full bg-[#FAF9F6] p-4 rounded-[2.5rem] flex flex-col gap-5 shadow-lg border border-white group"
@@ -101,16 +97,16 @@ export function Deals() {
 
                   <img 
                     src={deal.image} 
-                    alt={deal.name} 
+                    alt={t.items[index].name[lang]} 
                     className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500 p-2" 
                   />
                 </div>
 
                 {/* Bottom Text Area */}
                 <div className="w-full py-2 px-2 flex flex-col h-full">
-                  <span className="text-slate-500 text-sm font-medium mb-1">{deal.category}</span>
+                  <span className="text-slate-500 text-sm font-medium mb-1">{t.items[index].category[lang]}</span>
                   <h3 className="text-2xl font-bold text-slate-900 mb-2 truncate">
-                    {deal.name}
+                    {t.items[index].name[lang]}
                   </h3>
                   
                   <div className="flex items-center gap-3 mb-2">
@@ -124,12 +120,12 @@ export function Deals() {
                   </div>
 
                   <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-grow line-clamp-4">
-                    {deal.description}
+                    {t.items[index].description[lang]}
                   </p>
 
                   <div className="mt-auto flex justify-end">
                     <Link href="#shop" className="text-slate-800 hover:text-[#43913A] font-bold flex items-center gap-2 transition-colors">
-                      Shop Now <ArrowRight size={18} />
+                      {t.shopNow[lang]} <ArrowRight size={18} />
                     </Link>
                   </div>
                 </div>
@@ -151,16 +147,16 @@ export function Deals() {
             transition={{ duration: 0.6 }}
           >
             <div className="relative z-10 w-full md:w-3/5">
-              <div className="text-slate-500 font-medium text-lg mb-2">Flat 20% Discount</div>
-              <h3 className="text-slate-900 text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-tight">Latest Polishing Machines</h3>
+              <div className="text-slate-500 font-medium text-lg mb-2">{t.banner1.discount[lang]}</div>
+              <h3 className="text-slate-900 text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-tight">{t.banner1.title[lang]}</h3>
               <p className="text-slate-600 font-medium mb-8 max-w-sm md:max-w-none">
-                High-performance floor grinders to get your projects done faster and better.
+                {t.banner1.desc[lang]}
               </p>
               <Link 
                 href="#shop"
                 className="inline-flex bg-[#3A3F47] hover:bg-[#43913A] text-white px-6 py-3 rounded-full font-medium transition-colors items-center gap-2"
               >
-                Shop Now <ArrowRight size={16} />
+                {t.shopNow[lang]} <ArrowRight size={16} />
               </Link>
             </div>
             <div className="absolute right-0 bottom-0 w-1/2 md:w-1/2 h-[100%] md:h-[120%] translate-y-10 group-hover:scale-105 transition-transform duration-500">
@@ -181,16 +177,16 @@ export function Deals() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="relative z-10 w-full md:w-3/5">
-              <div className="text-white/80 font-medium text-lg mb-2">Flat 15% Discount</div>
-              <h3 className="text-white text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-tight">Concrete Sealer Collection</h3>
+              <div className="text-white/80 font-medium text-lg mb-2">{t.banner2.discount[lang]}</div>
+              <h3 className="text-white text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-tight">{t.banner2.title[lang]}</h3>
               <p className="text-white/90 font-medium mb-8 max-w-sm md:max-w-none">
-                Protect your floors with our premium penetrating sealers.
+                {t.banner2.desc[lang]}
               </p>
               <Link 
                 href="#shop"
                 className="inline-flex bg-[#3A3F47] hover:bg-slate-900 text-white px-6 py-3 rounded-full font-medium transition-colors items-center gap-2"
               >
-                Shop Now <ArrowRight size={16} />
+                {t.shopNow[lang]} <ArrowRight size={16} />
               </Link>
             </div>
             <div className="absolute right-0 bottom-0 w-1/2 md:w-1/2 h-[100%] md:h-[120%] translate-y-10 group-hover:scale-105 transition-transform duration-500">

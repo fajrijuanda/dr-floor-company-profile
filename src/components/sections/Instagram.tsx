@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 const InstagramIcon = ({ size = 24, className = "", strokeWidth = 2 }) => (
   <svg 
@@ -23,34 +25,17 @@ const InstagramIcon = ({ size = 24, className = "", strokeWidth = 2 }) => (
 );
 
 const instagramPosts = [
-  {
-    id: 1,
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=600&auto=format&fit=crop",
-    link: "#"
-  },
-  {
-    id: 2,
-    image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=600&auto=format&fit=crop",
-    link: "#"
-  },
-  {
-    id: 3,
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop",
-    link: "#"
-  },
-  {
-    id: 4,
-    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=600&auto=format&fit=crop",
-    link: "#"
-  },
-  {
-    id: 5,
-    image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=600&auto=format&fit=crop",
-    link: "#"
-  }
+  { id: 1, image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=600&auto=format&fit=crop", link: "#" },
+  { id: 2, image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=600&auto=format&fit=crop", link: "#" },
+  { id: 3, image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop", link: "#" },
+  { id: 4, image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=600&auto=format&fit=crop", link: "#" },
+  { id: 5, image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=600&auto=format&fit=crop", link: "#" }
 ];
 
 export function Instagram() {
+  const { lang } = useLanguage();
+  const t = translations.instagram;
+
   return (
     <section id="instagram" className="py-24 bg-gradient-to-r from-[#e6e2dd] via-[#f2f0ec] to-white overflow-hidden">
       <div className="w-full">
@@ -59,10 +44,10 @@ export function Instagram() {
         <div className="flex flex-col items-center justify-center text-center mb-16 px-4">
           <div className="flex items-center gap-3 text-slate-700 font-bold text-lg mb-2">
             <span className="w-6 h-[2px] bg-[#43913A]"></span> 
-            Follow Us
+            {t.subtitle[lang]}
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-slate-800 tracking-tight">
-            Follow Us On Instagram
+            {t.title[lang]}
           </h2>
         </div>
 

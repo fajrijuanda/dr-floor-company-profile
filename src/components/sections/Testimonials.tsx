@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Quote, Star } from "lucide-react";
 import { useState, useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 const testimonials = [
   {
@@ -10,7 +12,10 @@ const testimonials = [
     name: "Cameron Williamson",
     role: "Architecture",
     rating: 5.0,
-    text: "Sagittis urna faucibus placerat faucibus bibendum. Arcu vestibulum gravida id dolor porta ut elementum eu. Condimentum cursus eu viverra praesent. In quis eu pellentesque purus aliquam magnis tincidunt diam. Vitae viverra ultrices dui et pellentesque enim.",
+    text: {
+      id: "Dr. Floor memberikan layanan poles beton yang luar biasa untuk proyek gudang kami. Hasilnya sangat mengesankan dengan kilap yang sempurna dan daya tahan yang tinggi. Tim mereka sangat profesional dan tepat waktu.",
+      en: "Dr. Floor provided an outstanding concrete polishing service for our warehouse project. The results were impressive with perfect shine and high durability. Their team was very professional and on time.",
+    },
     image: "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?q=80&w=200&auto=format&fit=crop"
   },
   {
@@ -18,7 +23,10 @@ const testimonials = [
     name: "Jane Cooper",
     role: "Interior Designer",
     rating: 5.0,
-    text: "Sit dignissim diam eu pulvinar imperdiet libero eget cursus hendrerit. Quis sed elementum tristique eu sed tempus consequat mi scelerisque. Nulla pharetra facilisi praesent odio venenatis egestas at vulputate elementum. Eu sit gravida risus duis.",
+    text: {
+      id: "Sebagai desainer interior, saya sangat merekomendasikan Dr. Floor untuk finishing lantai beton. Kualitas poles dan epoxy coating mereka luar biasa, dan mereka selalu mendengarkan kebutuhan desain klien.",
+      en: "As an interior designer, I highly recommend Dr. Floor for concrete floor finishing. Their polishing and epoxy coating quality is outstanding, and they always listen to the client's design needs.",
+    },
     image: "https://images.unsplash.com/photo-1531123897727-8f129e1bf98c?q=80&w=200&auto=format&fit=crop"
   },
   {
@@ -26,7 +34,10 @@ const testimonials = [
     name: "Robert Fox",
     role: "Property Developer",
     rating: 5.0,
-    text: "Massa sed at tellus tellus in. Mauris in cras sit congue aliquet sed eu pulvinar imperdiet. Sit dignissim diam eu pulvinar imperdiet libero eget cursus hendrerit. Quis sed elementum tristique eu sed tempus consequat.",
+    text: {
+      id: "Kami telah bekerja sama dengan Dr. Floor untuk beberapa proyek properti komersial. Konsistensi kualitas dan layanan mereka selalu terjaga. Solusi lantai yang mereka tawarkan sangat hemat biaya dan tahan lama.",
+      en: "We have worked with Dr. Floor on several commercial property projects. Their quality and service consistency is always maintained. The flooring solutions they offer are very cost-effective and durable.",
+    },
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop"
   },
   {
@@ -34,7 +45,10 @@ const testimonials = [
     name: "Eleanor Pena",
     role: "Home Owner",
     rating: 5.0,
-    text: "Aliquet sed eu pulvinar imperdiet. Sit dignissim diam eu pulvinar imperdiet libero eget cursus hendrerit. Quis sed elementum tristique eu sed tempus consequat. Massa sed at tellus tellus in.",
+    text: {
+      id: "Rumah kami terasa jauh lebih modern dan mewah setelah lantai beton dipoles oleh Dr. Floor. Prosesnya cepat, bersih, dan hasilnya melebihi ekspektasi kami. Sangat puas!",
+      en: "Our home feels much more modern and luxurious after the concrete floor was polished by Dr. Floor. The process was fast, clean, and the results exceeded our expectations. Very satisfied!",
+    },
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop"
   }
 ];
@@ -45,6 +59,8 @@ export function Testimonials() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const { lang } = useLanguage();
+  const t = translations.testimonials;
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollRef.current) return;
@@ -65,7 +81,7 @@ export function Testimonials() {
     if (!isDragging || !scrollRef.current) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll-fast
+    const walk = (x - startX) * 2;
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -99,10 +115,10 @@ export function Testimonials() {
         <div className="flex flex-col items-center justify-center text-center mb-16 px-4">
           <div className="flex items-center gap-3 text-slate-700 font-bold text-lg mb-2">
             <span className="w-6 h-[2px] bg-[#43913A]"></span> 
-            Testimonial
+            {t.subtitle[lang]}
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-slate-800 tracking-tight">
-            What Our Client Say
+            {t.title[lang]}
           </h2>
         </div>
 
@@ -162,7 +178,7 @@ export function Testimonials() {
               {/* Bottom Section with Review Text */}
               <div className="px-8 pb-10 pt-4">
                 <p className="text-slate-600 leading-relaxed font-medium">
-                  "{item.text}"
+                  &quot;{item.text[lang]}&quot;
                 </p>
               </div>
 

@@ -5,10 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Search, Heart, ShoppingCart, User, Phone, Mail, Globe } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { lang } = useLanguage();
+  const t = translations.nav;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,11 +23,11 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Tentang Kami", href: "#about" },
-    { name: "Layanan", href: "#services" },
-    { name: "Portofolio", href: "#portfolio" },
-    { name: "Hubungi Kami", href: "#contact" },
+    { name: t.links.home[lang], href: "#home" },
+    { name: t.links.about[lang], href: "#about" },
+    { name: t.links.services[lang], href: "#services" },
+    { name: t.links.portfolio[lang], href: "#portfolio" },
+    { name: t.links.contact[lang], href: "#contact" },
   ];
 
   return (
@@ -32,10 +36,10 @@ export function Navbar() {
       <div className="w-full min-h-[40px] py-2 md:py-0 md:h-10 bg-slate-900 text-slate-300 px-4 lg:px-8 xl:px-10 text-xs lg:text-sm font-medium flex items-center">
         <div className="w-full flex flex-col md:flex-row justify-between items-center gap-2 md:gap-0">
           <div className="hidden md:block">
-            Call Us : (+62) 21 5099 6969
+            {t.topBarCall[lang]}
           </div>
           <div className="text-center w-full md:w-auto leading-tight">
-            Dapatkan Penawaran Spesial untuk Proyek Anda. <Link href="#contact" className="text-[#43913A] hover:text-white transition-colors md:ml-1 block md:inline mt-1 md:mt-0">Hubungi Sekarang</Link>
+            {t.topBarPromo[lang]} <Link href="#contact" className="text-[#43913A] hover:text-white transition-colors md:ml-1 block md:inline mt-1 md:mt-0">{t.topBarCta[lang]}</Link>
           </div>
           <div className="hidden md:flex items-center gap-4">
             <Link href="#" className="hover:text-white transition-colors"><Phone size={16} /></Link>

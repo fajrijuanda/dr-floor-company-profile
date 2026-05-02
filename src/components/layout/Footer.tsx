@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 const FacebookIcon = ({ size = 18, className = "" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -29,6 +33,9 @@ const YoutubeIcon = ({ size = 18, className = "" }) => (
 );
 
 export function Footer() {
+  const { lang, setLang } = useLanguage();
+  const t = translations.footer;
+
   return (
     <footer className="bg-slate-800 text-white pt-20">
       <div className="w-full px-4 lg:px-8 xl:px-10">
@@ -46,22 +53,22 @@ export function Footer() {
               />
             </Link>
             <p className="text-white/80 mb-8 leading-relaxed font-medium text-sm">
-              Tincidunt tellus in nullam a integer tellus consequat augue. Quam donec nec molestie viverra nisl. Total solution partner for concrete polishing & epoxy coating.
+              {t.description[lang]}
             </p>
             <div className="flex space-x-3">
-              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-[#43913A] hover:text-white text-[#43413E] transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-[#43913A] hover:text-white text-slate-800 transition-colors">
                 <FacebookIcon size={18} className="fill-current" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-[#43913A] hover:text-white text-[#43413E] transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-[#43913A] hover:text-white text-slate-800 transition-colors">
                 <TwitterIcon size={18} className="fill-current" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-[#43913A] hover:text-white text-[#43413E] transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-[#43913A] hover:text-white text-slate-800 transition-colors">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 7.6 23.15c-.09-1.25-.17-3.16.03-4.52.19-.94 1.2-5.07 1.2-5.07s-.3-.61-.3-1.5c0-1.4.82-2.45 1.83-2.45.86 0 1.27.65 1.27 1.43 0 .86-.55 2.15-.83 3.34-.23 1 .5 1.81 1.48 1.81 1.78 0 3.14-1.88 3.14-4.58 0-2.4-1.73-4.08-4.18-4.08-2.84 0-4.5 2.13-4.5 4.31 0 .86.33 1.78.75 2.28.08.1.09.18.07.29-.06.27-.2.83-.23.95-.04.16-.14.2-.31.12-1.15-.54-1.87-2.22-1.87-3.58 0-2.9 2.1-5.57 6.08-5.57 3.2 0 5.68 2.28 5.68 5.34 0 3.18-2 5.75-4.78 5.75-1 0-1.85-.48-2.16-1.08l-.58 2.22c-.2.8-.75 1.79-1.12 2.4A12 12 0 1 0 12 0z"/></svg>
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-[#43913A] hover:text-white text-[#43413E] transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-[#43913A] hover:text-white text-slate-800 transition-colors">
                 <InstagramIcon size={18} className="stroke-current" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-[#43913A] hover:text-white text-[#43413E] transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-[#43913A] hover:text-white text-slate-800 transition-colors">
                 <YoutubeIcon size={18} className="stroke-current" />
               </a>
             </div>
@@ -69,29 +76,29 @@ export function Footer() {
 
           {/* Company Col */}
           <div className="lg:col-span-2">
-            <h4 className="text-xl font-bold mb-6">Company</h4>
+            <h4 className="text-xl font-bold mb-6">{t.company[lang]}</h4>
             <ul className="space-y-4">
-              <li><Link href="#about" className="text-white/80 hover:text-white transition-colors text-sm font-medium">About Us</Link></li>
-              <li><Link href="#blog" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Blog</Link></li>
-              <li><Link href="#contact" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Contact Us</Link></li>
-              <li><Link href="#career" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Career</Link></li>
+              <li><Link href="#about" className="text-white/80 hover:text-white transition-colors text-sm font-medium">{t.aboutUs[lang]}</Link></li>
+              <li><Link href="#blog" className="text-white/80 hover:text-white transition-colors text-sm font-medium">{t.blog[lang]}</Link></li>
+              <li><Link href="#contact" className="text-white/80 hover:text-white transition-colors text-sm font-medium">{t.contactUs[lang]}</Link></li>
+              <li><Link href="#career" className="text-white/80 hover:text-white transition-colors text-sm font-medium">{t.career[lang]}</Link></li>
             </ul>
           </div>
 
           {/* Customer Services Col */}
           <div className="lg:col-span-2">
-            <h4 className="text-xl font-bold mb-6">Costumer Services</h4>
+            <h4 className="text-xl font-bold mb-6">{t.customerService[lang]}</h4>
             <ul className="space-y-4">
-              <li><Link href="#" className="text-white/80 hover:text-white transition-colors text-sm font-medium">My Account</Link></li>
-              <li><Link href="#" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Track Your Order</Link></li>
-              <li><Link href="#" className="text-white/80 hover:text-white transition-colors text-sm font-medium">Return</Link></li>
-              <li><Link href="#faq" className="text-white/80 hover:text-white transition-colors text-sm font-medium">FAQ</Link></li>
+              <li><Link href="#" className="text-white/80 hover:text-white transition-colors text-sm font-medium">{t.myAccount[lang]}</Link></li>
+              <li><Link href="#" className="text-white/80 hover:text-white transition-colors text-sm font-medium">{t.trackOrder[lang]}</Link></li>
+              <li><Link href="#" className="text-white/80 hover:text-white transition-colors text-sm font-medium">{t.returnLabel[lang]}</Link></li>
+              <li><Link href="#faq" className="text-white/80 hover:text-white transition-colors text-sm font-medium">{t.faqLabel[lang]}</Link></li>
             </ul>
           </div>
 
           {/* Contact Info Col */}
           <div className="lg:col-span-2">
-            <h4 className="text-xl font-bold mb-6">Contact Info</h4>
+            <h4 className="text-xl font-bold mb-6">{t.contactInfoTitle[lang]}</h4>
             <ul className="space-y-4 text-white/80 text-sm font-medium mb-6">
               <li>+62 21 5099 6969 Ext. 1263</li>
               <li>hkdrfloor@gmail.com</li>
@@ -121,11 +128,15 @@ export function Footer() {
       <div className="bg-slate-900 border-t border-white/5 py-6">
         <div className="w-full px-4 lg:px-8 xl:px-10 flex flex-col md:flex-row justify-between items-center text-white/80 font-medium text-sm">
           <p className="mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Dr. Floor. All rights reserved.
+            &copy; {new Date().getFullYear()} {t.copyright[lang]}
           </p>
           <div className="flex items-center space-x-4">
             <div className="relative flex items-center hover:text-white transition-colors">
-              <select className="bg-transparent appearance-none pr-4 cursor-pointer outline-none" defaultValue="id">
+              <select
+                className="bg-transparent appearance-none pr-4 cursor-pointer outline-none"
+                value={lang}
+                onChange={(e) => setLang(e.target.value as "id" | "en")}
+              >
                 <option value="id" className="text-slate-900">Indonesia</option>
                 <option value="en" className="text-slate-900">English</option>
               </select>
