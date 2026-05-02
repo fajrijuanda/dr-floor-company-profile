@@ -58,7 +58,7 @@ export function Products() {
   const { lang } = useLanguage();
   const t = translations.products;
   const tabs = t.tabs[lang];
-  const [activeTab, setActiveTab] = useState(tabs[1]);
+  const [activeTab, setActiveTab] = useState<string>(tabs[1]);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);

@@ -29,7 +29,7 @@ export const translations = {
       en: "No.1 Concrete Polishing Service",
     },
     headline: {
-      id: "Total Solution\nPartner for\nConcrete Polishing",
+      id: "Solusi Total\nPartner untuk\nPoles Beton",
       en: "Total Solution\nPartner for\nConcrete Polishing",
     },
     subtitle: {
