@@ -30,8 +30,8 @@ const YoutubeIcon = ({ size = 18, className = "" }) => (
 
 export function Footer() {
   return (
-    <footer className="bg-[#43413E] text-white pt-20">
-      <div className="w-full px-4 lg:px-8 xl:px-10 w-full">
+    <footer className="bg-slate-800 text-white pt-20">
+      <div className="w-full px-4 lg:px-8 xl:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16">
           
           {/* Brand Col */}
@@ -118,21 +118,27 @@ export function Footer() {
       </div>
 
       {/* Bottom Copyright Bar */}
-      <div className="bg-[#2B2925] border-t border-white/5 py-6">
-        <div className="w-full px-4 lg:px-8 xl:px-10 w-full flex flex-col md:flex-row justify-between items-center text-white/80 font-medium text-sm">
+      <div className="bg-slate-900 border-t border-white/5 py-6">
+        <div className="w-full px-4 lg:px-8 xl:px-10 flex flex-col md:flex-row justify-between items-center text-white/80 font-medium text-sm">
           <p className="mb-4 md:mb-0">
             &copy; {new Date().getFullYear()} Dr. Floor. All rights reserved.
           </p>
           <div className="flex items-center space-x-4">
-            <button className="flex items-center gap-2 hover:text-white transition-colors">
-              English 
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
+            <div className="relative flex items-center hover:text-white transition-colors">
+              <select className="bg-transparent appearance-none pr-4 cursor-pointer outline-none" defaultValue="id">
+                <option value="id" className="text-slate-900">Indonesia</option>
+                <option value="en" className="text-slate-900">English</option>
+              </select>
+              <svg className="absolute right-0 pointer-events-none" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
             <span className="text-white/30">|</span>
-            <button className="flex items-center gap-2 hover:text-white transition-colors">
-              USD 
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
+            <div className="relative flex items-center hover:text-white transition-colors">
+              <select className="bg-transparent appearance-none pr-4 cursor-pointer outline-none" defaultValue="IDR">
+                <option value="IDR" className="text-slate-900">IDR</option>
+                <option value="USD" className="text-slate-900">USD</option>
+              </select>
+              <svg className="absolute right-0 pointer-events-none" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
           </div>
         </div>
       </div>
