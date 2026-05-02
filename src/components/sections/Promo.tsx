@@ -31,40 +31,40 @@ export function Promo() {
               <p className="text-xl text-slate-700 mb-10 font-medium">Get 25% - Limited Time Offer</p>
               
               {/* Timer */}
-              <div className="flex items-center gap-4 lg:gap-8 text-slate-800 mb-12">
+              <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4 lg:gap-8 text-slate-800 mb-12">
                 <div className="flex flex-col items-center">
-                  <span className="text-4xl lg:text-5xl font-medium mb-1">5</span>
-                  <span className="text-sm lg:text-base font-medium">days</span>
+                  <span className="text-3xl md:text-4xl lg:text-5xl font-medium mb-1">5</span>
+                  <span className="text-xs md:text-sm lg:text-base font-medium">days</span>
                 </div>
                 
-                <div className="flex flex-col gap-1 -mt-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-800"></span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-800"></span>
+                <div className="flex flex-col gap-1 -mt-4 md:-mt-6">
+                  <span className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-slate-800"></span>
+                  <span className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-slate-800"></span>
                 </div>
 
                 <div className="flex flex-col items-center">
-                  <span className="text-4xl lg:text-5xl font-medium mb-1">15</span>
-                  <span className="text-sm lg:text-base font-medium">Hours</span>
+                  <span className="text-3xl md:text-4xl lg:text-5xl font-medium mb-1">15</span>
+                  <span className="text-xs md:text-sm lg:text-base font-medium">Hours</span>
                 </div>
 
-                <div className="flex flex-col gap-1 -mt-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-800"></span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-800"></span>
-                </div>
-
-                <div className="flex flex-col items-center">
-                  <span className="text-4xl lg:text-5xl font-medium mb-1">38</span>
-                  <span className="text-sm lg:text-base font-medium">Minutes</span>
-                </div>
-
-                <div className="flex flex-col gap-1 -mt-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-800"></span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-800"></span>
+                <div className="flex flex-col gap-1 -mt-4 md:-mt-6">
+                  <span className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-slate-800"></span>
+                  <span className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-slate-800"></span>
                 </div>
 
                 <div className="flex flex-col items-center">
-                  <span className="text-4xl lg:text-5xl font-medium mb-1">14</span>
-                  <span className="text-sm lg:text-base font-medium">Seconds</span>
+                  <span className="text-3xl md:text-4xl lg:text-5xl font-medium mb-1">38</span>
+                  <span className="text-xs md:text-sm lg:text-base font-medium">Minutes</span>
+                </div>
+
+                <div className="flex flex-col gap-1 -mt-4 md:-mt-6">
+                  <span className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-slate-800"></span>
+                  <span className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-slate-800"></span>
+                </div>
+
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl md:text-4xl lg:text-5xl font-medium mb-1">14</span>
+                  <span className="text-xs md:text-sm lg:text-base font-medium">Seconds</span>
                 </div>
               </div>
 

@@ -29,13 +29,13 @@ export function Navbar() {
   return (
     <header className={`w-full z-50 fixed top-0 transition-transform duration-300 ${isScrolled ? '-translate-y-10' : 'translate-y-0'}`}>
       {/* Top Bar - Darker */}
-      <div className="w-full h-10 bg-slate-900 text-slate-300 px-4 lg:px-8 xl:px-10 text-xs lg:text-sm font-medium flex items-center">
-        <div className="w-full flex justify-between items-center">
+      <div className="w-full min-h-[40px] py-2 md:py-0 md:h-10 bg-slate-900 text-slate-300 px-4 lg:px-8 xl:px-10 text-xs lg:text-sm font-medium flex items-center">
+        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-2 md:gap-0">
           <div className="hidden md:block">
             Call Us : (+62) 21 5099 6969
           </div>
-          <div className="text-center w-full md:w-auto">
-            Dapatkan Penawaran Spesial untuk Proyek Anda. <Link href="#contact" className="text-[#43913A] hover:text-white transition-colors ml-1">Hubungi Sekarang</Link>
+          <div className="text-center w-full md:w-auto leading-tight">
+            Dapatkan Penawaran Spesial untuk Proyek Anda. <Link href="#contact" className="text-[#43913A] hover:text-white transition-colors md:ml-1 block md:inline mt-1 md:mt-0">Hubungi Sekarang</Link>
           </div>
           <div className="hidden md:flex items-center gap-4">
             <Link href="#" className="hover:text-white transition-colors"><Phone size={16} /></Link>

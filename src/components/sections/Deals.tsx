@@ -150,10 +150,10 @@ export function Deals() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="relative z-10 w-3/5">
+            <div className="relative z-10 w-full md:w-3/5">
               <div className="text-slate-500 font-medium text-lg mb-2">Flat 20% Discount</div>
-              <h3 className="text-slate-900 text-4xl lg:text-5xl font-black mb-6 leading-tight">Latest Polishing Machines</h3>
-              <p className="text-slate-600 font-medium mb-8">
+              <h3 className="text-slate-900 text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-tight">Latest Polishing Machines</h3>
+              <p className="text-slate-600 font-medium mb-8 max-w-sm md:max-w-none">
                 High-performance floor grinders to get your projects done faster and better.
               </p>
               <Link 
@@ -163,7 +163,7 @@ export function Deals() {
                 Shop Now <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="absolute right-0 bottom-0 w-1/2 h-[120%] translate-y-10 group-hover:scale-105 transition-transform duration-500">
+            <div className="absolute right-0 bottom-0 w-1/2 md:w-1/2 h-[100%] md:h-[120%] translate-y-10 group-hover:scale-105 transition-transform duration-500">
               <img 
                 src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=600&auto=format&fit=crop" 
                 alt="Machines" 
@@ -180,10 +180,10 @@ export function Deals() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="relative z-10 w-3/5">
+            <div className="relative z-10 w-full md:w-3/5">
               <div className="text-white/80 font-medium text-lg mb-2">Flat 15% Discount</div>
-              <h3 className="text-white text-4xl lg:text-5xl font-black mb-6 leading-tight">Concrete Sealer Collection</h3>
-              <p className="text-white/90 font-medium mb-8">
+              <h3 className="text-white text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-tight">Concrete Sealer Collection</h3>
+              <p className="text-white/90 font-medium mb-8 max-w-sm md:max-w-none">
                 Protect your floors with our premium penetrating sealers.
               </p>
               <Link 
@@ -193,7 +193,7 @@ export function Deals() {
                 Shop Now <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="absolute right-0 bottom-0 w-1/2 h-[120%] translate-y-10 group-hover:scale-105 transition-transform duration-500">
+            <div className="absolute right-0 bottom-0 w-1/2 md:w-1/2 h-[100%] md:h-[120%] translate-y-10 group-hover:scale-105 transition-transform duration-500">
               <img 
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop" 
                 alt="Sealer" 

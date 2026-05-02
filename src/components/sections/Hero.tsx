@@ -101,12 +101,12 @@ export function Hero() {
               </div>
 
               {/* Headline */}
-              <h1 className="text-5xl lg:text-6xl xl:text-[4.5rem] font-black text-slate-900 leading-[1.05] tracking-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] font-black text-slate-900 leading-[1.1] tracking-tight mb-4 md:mb-6">
                 Total Solution <br /> Partner for <br /> Concrete Polishing
               </h1>
 
               {/* Subtitle */}
-              <p className="text-lg text-slate-700 mb-10 max-w-lg leading-relaxed font-medium">
+              <p className="text-base md:text-lg text-slate-700 mb-8 md:mb-10 max-w-lg leading-relaxed font-medium">
                 Dr. Floor is a No.1 Leading Eco-Friendly Concrete Polishing Company in Indonesia with High-tech & Innovative Products.
               </p>
 
